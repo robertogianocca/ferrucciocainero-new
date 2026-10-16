@@ -6,6 +6,7 @@ import { structureTool } from "sanity/structure";
 
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schemaTypes } from "./src/sanity/schemaTypes";
+import { structure } from "./src/sanity/structure";
 
 const config = defineConfig({
   name: "ferruccio-cainero",
@@ -13,7 +14,10 @@ const config = defineConfig({
   projectId,
   dataset,
   basePath: "/admin",
-  plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [
+    structureTool({ structure }),
+    visionTool({ defaultApiVersion: apiVersion }),
+  ],
   schema: {
     types: schemaTypes,
   },

@@ -53,8 +53,8 @@ Copy `.env.example` to `.env.local` and fill in the values as each step of the m
 
 1. Scaffold
 2. GitHub repository
-3. Sanity project + Studio at `/admin` (current)
-4. Content schemas (events, posts, pages, settings)
+3. Sanity project + Studio at `/admin`
+4. Content schemas (events, posts, pages, settings) (current)
 5. WordPress content analysis
 6. Migration from WordPress
 7. Base layout (header, footer, nav)
