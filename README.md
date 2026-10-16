@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ferruccio Cainero — website
 
-## Getting Started
+Next.js rebuild of [ferrucciocainero.ch](https://ferrucciocainero.ch).
 
-First, run the development server:
+Content is managed in [Sanity](https://www.sanity.io/) (free plan). The editor UI will live at `/studio`. The site is deployed on Vercel.
+
+## Stack
+
+- Next.js (App Router, TypeScript, Tailwind CSS)
+- Sanity CMS (embedded Studio)
+- Vercel hosting
+- Resend (contact form email)
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and fill in the values as each step of the migration is completed. Never commit `.env.local`.
 
-## Learn More
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Sanity project ID |
+| `NEXT_PUBLIC_SANITY_DATASET` | Dataset name (`production`) |
+| `NEXT_PUBLIC_SANITY_API_VERSION` | Sanity API version date |
+| `SANITY_API_READ_TOKEN` | Read token (drafts / visual editing) |
+| `SANITY_REVALIDATE_SECRET` | Shared secret for the publish webhook |
+| `RESEND_API_KEY` | Resend API key for the contact form |
+| `CONTACT_FROM_EMAIL` | Sender address (verified in Resend) |
+| `CONTACT_TO_EMAIL` | Inbox that receives form submissions |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Roadmap
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Scaffold (this step)
+2. GitHub repository
+3. Sanity project + Studio at `/studio`
+4. Content schemas (events, posts, pages, settings)
+5. WordPress content analysis
+6. Migration from WordPress
+7. Base layout (header, footer, nav)
+8. Home + generic pages
+9. Blog
+10. Calendar
+11. Contact form
+12. Vercel deploy
+13. On-demand revalidation
+14. Visual editing
+15. SEO + redirects
+16. Client handover
+17. Go-live (DNS)
