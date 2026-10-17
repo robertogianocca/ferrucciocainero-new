@@ -48,15 +48,17 @@ Copy `.env.example` to `.env.local` and fill in the values as each step of the m
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint |
+| `npm run migrate:wp` | Import WordPress content into Sanity (needs `SANITY_API_WRITE_TOKEN`) |
 
 ## Roadmap
 
 1. Scaffold
 2. GitHub repository
 3. Sanity project + Studio at `/admin`
-4. Content schemas (events, posts, pages, settings) (current)
-5. WordPress content analysis
-6. Migration from WordPress
+4. Content schemas (events, posts, pages, settings)
+5. WordPress content analysis (see [docs/wordpress-migration-mapping.md](docs/wordpress-migration-mapping.md))
+6. Migration from WordPress (`npm run migrate:wp` — needs write token)
+
 7. Base layout (header, footer, nav)
 8. Home + generic pages
 9. Blog
