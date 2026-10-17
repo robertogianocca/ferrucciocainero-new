@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
   reactCompiler: true,
@@ -12,6 +11,43 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/2024/07/09/953",
+        destination: "/blog/attualita",
+        permanent: true,
+      },
+      {
+        source: "/2024/07/09/953/",
+        destination: "/blog/attualita",
+        permanent: true,
+      },
+      {
+        source: "/events/:slug",
+        destination: "/calendario/:slug",
+        permanent: true,
+      },
+      {
+        source: "/events/:slug/",
+        destination: "/calendario/:slug",
+        permanent: true,
+      },
+      {
+        source: "/attualita",
+        destination: "/blog",
+        permanent: false,
+      },
+    ];
   },
 };
 

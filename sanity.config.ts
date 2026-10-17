@@ -2,6 +2,7 @@
 
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
+import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
@@ -16,6 +17,14 @@ const config = defineConfig({
   basePath: "/admin",
   plugins: [
     structureTool({ structure }),
+    presentationTool({
+      previewUrl: {
+        initial: "/",
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+        },
+      },
+    }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
   schema: {
