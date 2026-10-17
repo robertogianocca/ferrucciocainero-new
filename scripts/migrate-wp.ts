@@ -241,14 +241,14 @@ function parseVenue(subtitle: string): { venue?: string; city?: string; infoUrl?
   if (!raw || /^reserviert$/i.test(raw) || raw === "-") return {};
 
   const urlMatch = raw.match(/https?:\/\/[^\s)]+/i);
-  const wwwMatch = !urlMatch && raw.match(/\bwww\.[^\s)]+/i);
+  const wwwMatch = urlMatch ? null : raw.match(/\bwww\.[^\s)]+/i);
   const infoUrl = urlMatch
     ? urlMatch[0]
     : wwwMatch
       ? `https://${wwwMatch[0]}`
       : undefined;
 
-  let rest = raw
+  const rest = raw
     .replace(urlMatch?.[0] ?? "", "")
     .replace(wwwMatch?.[0] ?? "", "")
     .replace(/\s*[;|]\s*$/, "")
@@ -396,7 +396,7 @@ function extractMainHtml(pageHtml: string, slug: string): string {
     doc.querySelector("main"),
   ].filter(Boolean) as Element[];
 
-  let root = candidates[0] || doc.body;
+  const root = candidates[0] || doc.body;
 
   // For home, keep it minimal — frontend will redesign
   if (slug === "home") {

@@ -58,8 +58,7 @@ Copy `.env.example` to `.env.local` and fill in the values as each step of the m
 4. Content schemas (events, posts, pages, settings)
 5. WordPress content analysis (see [docs/wordpress-migration-mapping.md](docs/wordpress-migration-mapping.md))
 6. Migration from WordPress (`npm run migrate:wp` — needs write token)
-
-7. Base layout (header, footer, nav)
+7. Base layout (header, footer, nav) (current)
 8. Home + generic pages
 9. Blog
 10. Calendar
